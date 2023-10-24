@@ -1,6 +1,7 @@
 # ClinicSync
- Proyecto Programacion Avanzada INF2236-1
+ Proyecto Programacion Avanzada INF2236-1.
 
+ 
  Integrantes:
            
             - Deivit Anthony Contreras Cortez
