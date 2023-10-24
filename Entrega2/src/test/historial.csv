@@ -1,0 +1,7 @@
+﻿rutpaciente,dia_consulta,receta_Entregada,examenes,obs
+12345678-9,2023-10-22 08:00:00,Paracetamol,Amoxicilina,Análisis de sangre,Paciente con fiebre
+87654321-0,2023-10-22 09:00:00,Ibuprofeno,Radiografía de tórax,Sin novedad
+98765432-1,2023-10-22 10:00:00,Vitamina C,Ecografía abdominal,Paciente en buen estado de salud
+23456789-0,2023-10-22 11:00:00,Antihistamínicos,Resonancia magnética,Alergia en la piel
+"34567890-1,2023-10-22 12:00:00,Insulina;Glucosa en sangre,Examen de la vista,Diabetes controlada"
+"12345678-9,2023-10-22 18:00:00,Paracetamol;Amoxicilina,Análisis de sangre,Paciente con vomitos"

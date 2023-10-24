@@ -1,0 +1,6 @@
+﻿Nombre,Apellido,rut,Especialidad,Formacion,Direccion,Correo,Telefono,Consulta,fechaNacimiento
+Juan,Pérez,12365678-9,Cardiología,Universidad XYZ,Calle A,jperez@email.com,987654321,Hospital ABC,13/05/1990
+Maria,López,87654321-0,Pediatría,Universidad ZYX,Ciudad Y,mlopez@email.com,987654322,Clínica DEF,13/05/1990
+Carlos,Ramírez,98765432-1,Neurología,Universidad ABC,Calle M,cramirez@email.com,987654323,Hospital GHI,13/05/1990
+Sofía,González,23456789-0,Dermatología,Universidad DEF,Calle P,sgonzalez@email.com,987654324,Clínica JKL,13/05/1990
+Luis,Hernández,34567890-1,Oftalmología,Universidad GHI,Calle R,lhernandez@email.com,987654325,Hospital MNO,13/05/1990
