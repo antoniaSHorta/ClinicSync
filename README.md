@@ -1,5 +1,6 @@
 # ClinicSync
- Proyecto Programacion Avanzada INF2236-1 2do semestre 2023
+ Proyecto Programacion Avanzada INF2236-1
+
  Integrantes:
            
             - Deivit Anthony Contreras Cortez
