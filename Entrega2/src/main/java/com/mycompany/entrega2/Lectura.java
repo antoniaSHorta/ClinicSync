@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import com.opencsv.CSVReader;
-import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -115,7 +114,7 @@ public ArrayList<Historial> LeerHistorial() throws CsvValidationException, FileN
         FileReader inputfile = new FileReader(file);
         CSVReader reader = new CSVReader(inputfile);
         String[] nextRecord;
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy/MM/dd");
         int i = 0;
         while ((nextRecord = reader.readNext()) != null) {
             if (i > 0) { // Salta el header
@@ -166,7 +165,7 @@ public ArrayList<Planificador> LeerPlanificador() throws CsvValidationException 
         int i = 0;
         while ((nextRecord = reader.readNext()) != null) {
             if (i > 0) { 
-                Date fecha = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").parse(nextRecord[0]);
+                Date fecha = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(nextRecord[0]);
                 int disponibilidad = Integer.parseInt(nextRecord[1]); //0 si esta disponible, 1 si la hora esta reservada
                 
                 // Crear objeto Paciente desde el CSV
@@ -181,7 +180,7 @@ public ArrayList<Planificador> LeerPlanificador() throws CsvValidationException 
                     nextRecord[2],  // rut
                     nextRecord[3],  // nombre
                     nextRecord[4],  // apellido
-                    new SimpleDateFormat("dd-MM-yyyy").parse(nextRecord[5]), // fecha_nacimiento
+                    new SimpleDateFormat("dd/MM/yyyy").parse(nextRecord[5]), // fecha_nacimiento
                     nextRecord[6],  // direccion
                     nextRecord[7],  // telefono
                     nextRecord[8]   // correo
@@ -321,9 +320,9 @@ public Doctor crearDoctorPorTeclado() {
 public Planificador crearPlanificadorPorTeclado(Paciente paciente) {
     Scanner scanner = new Scanner(System.in);
 
-    System.out.print("Ingrese hora (HH:mm): ");
+    System.out.print("Ingrese fecha y hora (dd/MM/yyyy HH:mm:ss): ");
     String horaStr = scanner.nextLine();
-    SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
+    SimpleDateFormat formatoHora = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     Date hora = null;
     try {
         hora = formatoHora.parse(horaStr);

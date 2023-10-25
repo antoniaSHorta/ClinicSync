@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
 import java.io.File;
@@ -24,10 +22,10 @@ public class Entrega2 {
         
         //Asegurarse de poner bien la ruta
         Scanner Entrada = new Scanner(System.in);
-        Lectura lector = new Lectura("D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\pacientes.csv",  
-                "D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\doctor.csv", 
-                "D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\historial.csv",
-                "D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\planificador.csv");
+        Lectura lector = new Lectura("D:\\WorkSapce\\Java\\Entrega2\\src\\test\\pacientes.csv",  
+                "D:\\WorkSapce\\Java\\Entrega2\\src\\test\\doctor.csv", 
+                "D:\\WorkSapce\\Java\\Entrega2\\src\\test\\historial.csv",
+                "D:\\WorkSapce\\Java\\Entrega2\\src\\test\\planificador.csv");
         Opciones operaciones = new Opciones();
         ArrayList<Paciente> pacientes = lector.LeerPaciente();
         ArrayList<Doctor> doctor = lector.LeerDoctor();
@@ -152,7 +150,7 @@ public static void EscribirPaciente(ArrayList<Paciente> pacientes) {
 }
 
 public static void EscribirDoctor(ArrayList<Doctor> doctores) {
-    File file = new File("D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\doctor.csv");
+    File file = new File("D:\\WorkSapce\\Java\\Entrega2\\src\\test\\doctor.csv");
     
     SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
     String []header = {"Nombre","Apellido","rut","Especialidad","Formacion","Direccion","Correo","Telefono","Consulta","fechaNacimiento"};
@@ -184,7 +182,7 @@ public static void EscribirDoctor(ArrayList<Doctor> doctores) {
 
 
 public static void EscribirHistorial(ArrayList<Historial> historiales) {
-    File file = new File("D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\historial.csv");
+    File file = new File("D:\\WorkSapce\\Java\\Entrega2\\src\\test\\historial.csv");
     
     SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
     String[] header = {
@@ -230,7 +228,7 @@ public static void EscribirHistorial(ArrayList<Historial> historiales) {
 
 
 public static void EscribirPlanificador(ArrayList<Planificador> planificaciones) {
-    File file = new File("D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\planificador.csv");
+    File file = new File("D:\\WorkSapce\\Java\\Entrega2\\src\\test\\planificador.csv");
     
     SimpleDateFormat formatoHora = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); // Formato para la fecha y hora
     SimpleDateFormat formatoFechaNacimiento = new SimpleDateFormat("dd-MM-yyyy"); // Formato para fecha de nacimiento
