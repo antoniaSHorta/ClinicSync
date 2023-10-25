@@ -22,17 +22,17 @@ public class Entrega2 {
     public static void main(String[] args) throws CsvValidationException, IOException, FileNotFoundException, ParseException {
         int opcion = -1, opcion_leer = 0;
         
-        //leer y mostrar datos
+        //Asegurarse de poner bien la ruta
         Scanner Entrada = new Scanner(System.in);
-        Lectura lector = new Lectura("D:\\WorkSapce\\Java\\EP2\\Entrega2\\src\\test\\pacientes.csv",  
-                "D:\\WorkSapce\\Java\\EP2\\Entrega2\\src\\test\\doctor.csv", 
-                "D:\\WorkSapce\\Java\\EP2\\Entrega2\\src\\test\\historial.csv",
-                "D:\\WorkSapce\\Java\\EP2\\Entrega2\\src\\test\\planificador.csv");
+        Lectura lector = new Lectura("D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\pacientes.csv",  
+                "D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\doctor.csv", 
+                "D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\historial.csv",
+                "D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\planificador.csv");
         Opciones operaciones = new Opciones();
         ArrayList<Paciente> pacientes = lector.LeerPaciente();
         ArrayList<Doctor> doctor = lector.LeerDoctor();
-        ArrayList<Planificador> planificador = lector.LeerPlanificador(pacientes);
-        ArrayList<Historial> historial = lector.LeerHistorial(pacientes);
+        ArrayList<Planificador> planificador = lector.LeerPlanificador();
+        ArrayList<Historial> historial = lector.LeerHistorial();
         
         //MENU
         while (opcion != 0) {
@@ -51,11 +51,27 @@ public class Entrega2 {
                         doctor.add(lector.crearDoctorPorTeclado());
                     } else if (opcion_leer == 3) {
                         if (pacientes != null) {
-                            planificador.add(lector.crearPlanificadorPorTeclado());
+                            //Revisar forma de agregar para minimizar codigo
+                            System.out.print("Ingrese rut paciente:");
+                            String rut = Entrada.next();
+                            Entrada.nextLine();
+                            Paciente buscado = lector.buscarPaciente(pacientes,rut);
+                            if(buscado != null)
+                            {
+                             planificador.add(lector.crearPlanificadorPorTeclado(buscado));
+                            }
                         }
                     } else if (opcion_leer == 4) {
                         if (pacientes != null) {
-                            historial.add(lector.crearHistorialPorTeclado());
+                            System.out.print("Ingrese rut paciente:");
+                            String rut = Entrada.next();
+                            Entrada.nextLine();
+                            Paciente buscado = lector.buscarPaciente(pacientes, rut);
+                            if (buscado!= null)
+                            {
+                                historial.add(lector.crearHistorialPorTeclado(buscado));
+                            }
+                            
                         }
                     }
                     break;
@@ -101,7 +117,7 @@ public class Entrega2 {
     }
      
 public static void EscribirPaciente(ArrayList<Paciente> pacientes) {
-    File file = new File("D:\\WorkSapce\\Java\\EP2\\Entrega2\\src\\test\\pacientes.csv");
+    File file = new File("D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\pacientes.csv");
     
     SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
     String[] header = {"rut","Nombre","Apellido","fecha_Nacimiento","altura","peso","grupo_Sanguineo","alergias","genero","telefono","correo","direccion","pre_Existencias","observaciones"};
@@ -136,7 +152,7 @@ public static void EscribirPaciente(ArrayList<Paciente> pacientes) {
 }
 
 public static void EscribirDoctor(ArrayList<Doctor> doctores) {
-    File file = new File("D:\\WorkSapce\\Java\\EP2\\Entrega2\\src\\test\\doctor.csv");
+    File file = new File("D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\doctor.csv");
     
     SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
     String []header = {"Nombre","Apellido","rut","Especialidad","Formacion","Direccion","Correo","Telefono","Consulta","fechaNacimiento"};
@@ -168,10 +184,14 @@ public static void EscribirDoctor(ArrayList<Doctor> doctores) {
 
 
 public static void EscribirHistorial(ArrayList<Historial> historiales) {
-    File file = new File("D:\\WorkSapce\\Java\\EP2\\Entrega2\\src\\test\\historial.csv");
+    File file = new File("D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\historial.csv");
     
     SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-    String []header = {"rutpaciente","dia_consulta","receta_Entregada","examenes,obs"}; 
+    String[] header = {
+        "rut", "nombre", "apellido", "fecha_nacimiento", "direccion", "telefono", "correo", 
+        "altura", "peso", "grupo_sanguineo", "alergias", "genero", "pre_existencias", "observaciones", 
+        "dia_consulta", "receta_Entregada", "examenes", "obs"
+    };
 
     try (
         FileWriter outputfile = new FileWriter(file, false);
@@ -180,8 +200,22 @@ public static void EscribirHistorial(ArrayList<Historial> historiales) {
         writer.writeNext(header);
         
         for (Historial historial : historiales) {
+            Paciente paciente = historial.getFicha();
             String[] data = {
-                historial.getFicha().getRut(),
+                paciente.getRut(),
+                paciente.getNombre(),
+                paciente.getApellido(),
+                formatoFecha.format(paciente.getFecha_nacimiento()).toString(),
+                paciente.getDireccion(),
+                paciente.getTelefono(),
+                paciente.getCorreo(),
+                paciente.getAltura(),
+                paciente.getPeso(),
+                paciente.getGrupo_sanguineo(),
+                paciente.getAlergias(),
+                paciente.getGenero(),
+                paciente.getPre_existencias(),
+                paciente.getObservaciones(),
                 formatoFecha.format(historial.getDia_consulta()).toString(),
                 historial.getReceta_Entregada(),
                 historial.getExamenes(),
@@ -194,11 +228,19 @@ public static void EscribirHistorial(ArrayList<Historial> historiales) {
     }
 }
 
+
 public static void EscribirPlanificador(ArrayList<Planificador> planificaciones) {
-    File file = new File("D:\\WorkSapce\\Java\\EP2\\Entrega2\\src\\test\\planificador.csv");
+    File file = new File("D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\planificador.csv");
     
-    SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss"); // Formato para la hora
-    String []header = {"fecha","disponibilidad","rutpaciente","observacion"};
+    SimpleDateFormat formatoHora = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); // Formato para la fecha y hora
+    SimpleDateFormat formatoFechaNacimiento = new SimpleDateFormat("dd-MM-yyyy"); // Formato para fecha de nacimiento
+    String []header = {
+        "hora", "disponibilidad", "rut", "nombre", "apellido", "fecha_nacimiento", 
+        "direccion", "telefono", "correo", "altura", "peso", "grupo_sanguineo", 
+        "alergias", "genero", "pre_existencias", "observaciones", "observacion_planificador"
+    };
+
+
     try (
         FileWriter outputfile = new FileWriter(file, false);
         CSVWriter writer = new CSVWriter(outputfile)
@@ -206,10 +248,24 @@ public static void EscribirPlanificador(ArrayList<Planificador> planificaciones)
         writer.writeNext(header);
         
         for (Planificador plan : planificaciones) {
+            Paciente ficha = plan.getFicha();
             String[] data = {
                 formatoHora.format(plan.getHora()).toString(),
                 Integer.toString(plan.getDisponibilidad()),
-                plan.getFicha().getRut(),
+                ficha.getRut(),
+                ficha.getNombre(),
+                ficha.getApellido(),
+                formatoFechaNacimiento.format(ficha.getFecha_nacimiento()),
+                ficha.getDireccion(),
+                ficha.getTelefono(),
+                ficha.getCorreo(),
+                ficha.getAltura(),
+                ficha.getPeso(),
+                ficha.getGrupo_sanguineo(),
+                ficha.getAlergias(),
+                ficha.getGenero(),
+                ficha.getPre_existencias(),
+                ficha.getObservaciones(),
                 plan.getObservacion()
             };
             writer.writeNext(data);
@@ -218,5 +274,6 @@ public static void EscribirPlanificador(ArrayList<Planificador> planificaciones)
         e.printStackTrace();
     }
 }
+
 }
 

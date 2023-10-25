@@ -1,5 +1,2 @@
-"rutpaciente","dia_consulta","receta_Entregada","examenes,obs"
-"12345678-9","22/10/2023","Paracetamol","Amoxicilina","Análisis de sangre"
-"87654321-0","22/10/2023","Ibuprofeno","Radiografía de tórax","Sin novedad"
-"98765432-1","22/10/2023","Vitamina C","Ecografía abdominal","Paciente en buen estado de salud"
-"23456789-0","22/10/2023","Antihistamínicos","Resonancia magnética","Alergia en la piel"
+"rut","nombre","apellido","fecha_nacimiento","direccion","telefono","correo","altura","peso","grupo_sanguineo","alergias","genero","pre_existencias","observaciones","dia_consulta","receta_Entregada","examenes","obs"
+"12345678-9","Juan","Pérez","15/05/1990","brasil#34","987654321","jperez@email.com","1.75","70","A+","Polvo de polen","M","diabetes","Aspirina","19/11/2000","paracetamol 500mg","ningunos","paracetamol cada 8 horas"
