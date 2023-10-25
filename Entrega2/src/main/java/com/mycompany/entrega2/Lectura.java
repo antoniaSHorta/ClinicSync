@@ -15,6 +15,7 @@ import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 
 public class Lectura {
@@ -172,6 +173,175 @@ public ArrayList<Doctor> LeerDoctor() throws CsvValidationException {
         }
         return null;
     }
+    
+        
+    //
+    //
+    //CREAR OBJETOS
+    //
+    //
+    public Paciente crearPacientePorTeclado() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print("Ingrese altura: ");
+    String altura = scanner.nextLine();
+
+    System.out.print("Ingrese peso: ");
+    String peso = scanner.nextLine();
+
+    System.out.print("Ingrese grupo sanguíneo: ");
+    String grupo_sanguineo = scanner.nextLine();
+
+    System.out.print("Ingrese alergias: ");
+    String alergias = scanner.nextLine();
+
+    System.out.print("Ingrese género: ");
+    String genero = scanner.nextLine();
+
+    System.out.print("Ingrese pre-existencias: ");
+    String pre_existencias = scanner.nextLine();
+
+    System.out.print("Ingrese observaciones: ");
+    String observaciones = scanner.nextLine();
+
+    System.out.print("Ingrese RUT: ");
+    String rut = scanner.nextLine();
+
+    System.out.print("Ingrese nombre: ");
+    String nombre = scanner.nextLine();
+
+    System.out.print("Ingrese apellido: ");
+    String apellido = scanner.nextLine();
+
+    System.out.print("Ingrese fecha de nacimiento (dd/MM/yyyy): ");
+    String fechaNacimientoStr = scanner.nextLine();
+    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+    Date fecha_nacimiento = null;
+    try {
+        fecha_nacimiento = formatoFecha.parse(fechaNacimientoStr);
+    } catch (ParseException e) {
+        e.printStackTrace();
+    }
+
+    System.out.print("Ingrese dirección: ");
+    String direccion = scanner.nextLine();
+
+    System.out.print("Ingrese teléfono: ");
+    String telefono = scanner.nextLine();
+
+    System.out.print("Ingrese correo: ");
+    String correo = scanner.nextLine();
+
+    return new Paciente(altura, peso, grupo_sanguineo, alergias, genero, pre_existencias, observaciones, rut, nombre, apellido, fecha_nacimiento, direccion, telefono, correo);
 }
+public Doctor crearDoctorPorTeclado() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print("Ingrese Especialidad: ");
+    String Especialidad = scanner.nextLine();
+
+    System.out.print("Ingrese formación: ");
+    String formacion = scanner.nextLine();
+
+    System.out.print("Ingrese consulta: ");
+    String consulta = scanner.nextLine();
+
+    System.out.print("Ingrese RUT: ");
+    String rut = scanner.nextLine();
+
+    System.out.print("Ingrese nombre: ");
+    String nombre = scanner.nextLine();
+
+    System.out.print("Ingrese apellido: ");
+    String apellido = scanner.nextLine();
+
+    System.out.print("Ingrese fecha de nacimiento (dd/MM/yyyy): ");
+    String fechaNacimientoStr = scanner.nextLine();
+    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+    Date fecha_nacimiento = null;
+    try {
+        fecha_nacimiento = formatoFecha.parse(fechaNacimientoStr);
+    } catch (ParseException e) {
+        e.printStackTrace();
+    }
+
+    System.out.print("Ingrese dirección: ");
+    String direccion = scanner.nextLine();
+
+    System.out.print("Ingrese teléfono: ");
+    String telefono = scanner.nextLine();
+
+    System.out.print("Ingrese correo: ");
+    String correo = scanner.nextLine();
+
+    return new Doctor(Especialidad, formacion, consulta, rut, nombre, apellido, fecha_nacimiento, direccion, telefono, correo);
+}
+public Planificador crearPlanificadorPorTeclado() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print("Ingrese hora (HH:mm): ");
+    String horaStr = scanner.nextLine();
+    SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
+    Date hora = null;
+    try {
+        hora = formatoHora.parse(horaStr);
+    } catch (ParseException e) {
+        e.printStackTrace();
+    }
+
+    System.out.print("Ingrese disponibilidad (0 para libre, 1 para ocupado): ");
+    int disponibilidad;
+    while (true) {
+        try {
+            disponibilidad = Integer.parseInt(scanner.nextLine());
+            if (disponibilidad == 0 || disponibilidad == 1) {
+                break;
+            } else {
+                System.out.println("Ingrese un valor válido (0 o 1).");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Ingrese un valor válido (0 o 1).");
+        }
+    }
+
+    // Asumiendo que tienes un método para crear un paciente por teclado, de lo contrario deberás adaptarlo.
+    Paciente ficha = crearPacientePorTeclado();
+
+    System.out.print("Ingrese observación: ");
+    String observacion = scanner.nextLine();
+
+    return new Planificador(hora, disponibilidad, ficha, observacion);
+}
+public Historial crearHistorialPorTeclado() {
+    Scanner scanner = new Scanner(System.in);
+
+    // Asumiendo que tienes un método para crear un paciente por teclado, de lo contrario deberás adaptarlo.
+    System.out.println("Ingrese la información del paciente:");
+    Paciente ficha = crearPacientePorTeclado();
+
+    System.out.print("Ingrese fecha de consulta (dd/MM/yyyy): ");
+    String fechaConsultaStr = scanner.nextLine();
+    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+    Date dia_consulta = null;
+    try {
+        dia_consulta = formatoFecha.parse(fechaConsultaStr);
+    } catch (ParseException e) {
+        e.printStackTrace();
+    }
+
+    System.out.print("Ingrese receta entregada: ");
+    String receta_Entregada = scanner.nextLine();
+
+    System.out.print("Ingrese exámenes: ");
+    String examenes = scanner.nextLine();
+
+    System.out.print("Ingrese observaciones: ");
+    String obs = scanner.nextLine();
+
+    return new Historial(ficha, dia_consulta, receta_Entregada, examenes, obs);
+}
+  
+}
+
 
 

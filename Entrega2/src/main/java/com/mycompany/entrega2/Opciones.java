@@ -3,15 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.entrega2;
+import java.util.Scanner;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-/**
- *
- * @author benji
- */
 public class Opciones {
 
     public void Menu() {
-
         System.out.println("INGRESE LA OPCION");
         System.out.println("1. Crear Datos");
         System.out.println("2. Actualizar Datos");
@@ -21,15 +20,18 @@ public class Opciones {
     }
 
     public void Menu1(){
-        System.out.println("1. Leer pacientes");
-        System.out.println("2. Leer Doctores");
-        System.out.println("3. Leer Planificados");
-        System.out.println("4. Leer Historial");
+        System.out.println("1. Agregar pacientes");
+        System.out.println("2. Agregar Doctores");
+        System.out.println("3. Agregar Planificados");
+        System.out.println("4. Agregar Historial");
     }
+    
     public void Menu2(){
         System.out.println("1. Mostrar pacientes");
         System.out.println("2. Mostrar Doctores");
         System.out.println("3. Mostrar Planificados");
         System.out.println("4. Mostrar Historial");
     }
+    
+    
 }
