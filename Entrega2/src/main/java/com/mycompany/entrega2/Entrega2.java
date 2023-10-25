@@ -115,7 +115,7 @@ public class Entrega2 {
     }
      
 public static void EscribirPaciente(ArrayList<Paciente> pacientes) {
-    File file = new File("D:\\workspace\\Java\\ClinicSync\\Entrega2\\src\\test\\pacientes.csv");
+    File file = new File("D:\\WorkSapce\\Java\\Entrega2\\src\\test\\pacientes.csv");
     
     SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
     String[] header = {"rut","Nombre","Apellido","fecha_Nacimiento","altura","peso","grupo_Sanguineo","alergias","genero","telefono","correo","direccion","pre_Existencias","observaciones"};
@@ -230,8 +230,8 @@ public static void EscribirHistorial(ArrayList<Historial> historiales) {
 public static void EscribirPlanificador(ArrayList<Planificador> planificaciones) {
     File file = new File("D:\\WorkSapce\\Java\\Entrega2\\src\\test\\planificador.csv");
     
-    SimpleDateFormat formatoHora = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); // Formato para la fecha y hora
-    SimpleDateFormat formatoFechaNacimiento = new SimpleDateFormat("dd-MM-yyyy"); // Formato para fecha de nacimiento
+    SimpleDateFormat formatoHora = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // Formato para la fecha y hora
+    SimpleDateFormat formatoFechaNacimiento = new SimpleDateFormat("dd/MM/yyyy"); // Formato para fecha de nacimiento
     String []header = {
         "hora", "disponibilidad", "rut", "nombre", "apellido", "fecha_nacimiento", 
         "direccion", "telefono", "correo", "altura", "peso", "grupo_sanguineo", 
