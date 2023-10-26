@@ -23,10 +23,10 @@ public class Entrega2 {
         
         //Asegurarse de poner bien la ruta
         Scanner Entrada = new Scanner(System.in);
-        Lectura lector = new Lectura("D:\\WorkSapce\\Java\\Entrega2\\src\\test\\pacientes.csv",  
-                "D:\\WorkSapce\\Java\\Entrega2\\src\\test\\doctor.csv", 
-                "D:\\WorkSapce\\Java\\Entrega2\\src\\test\\historial.csv",
-                "D:\\WorkSapce\\Java\\Entrega2\\src\\test\\planificador.csv");
+        Lectura lector = new Lectura("datos/pacientes.csv",  
+                "datos/doctor.csv", 
+                "datos/historial.csv",
+                "datos/planificador.csv");
         Opciones operaciones = new Opciones();
         Buscar buscador = new Buscar();
         Modificar modificador = new Modificar();
@@ -166,33 +166,34 @@ public class Entrega2 {
                     
                 }
                 
-                case 3 -> {//Imprimir los datos
+                case 3 -> { // Imprimir los datos
                     operaciones.Menu3();
                     opcion_leer = Entrada.nextInt();
 
                     if (opcion_leer == 1 && pacientes != null) {
-                        for (int i = 0; i < pacientes.size(); i++) {
-                            pacientes.get(i).mostrarPaciente();
+                        for (Paciente paciente : pacientes) {
+                            paciente.describir();
                         }
                     }
                     if (opcion_leer == 2 && doctor != null) {
-                        for(int i = 0; i < doctor.size(); i++){
-                            doctor.get(i).mostrarDatosDoctor();
+                        for (Doctor doc : doctor) {
+                            doc.describir();
                         }
                     }
-                    if (opcion_leer == 3 && planificador != null){
-                        for(int i = 0; i < planificador.size(); i++){
-                            planificador.get(i).mostrarDatosPlanificador();
-                            }
+                    if (opcion_leer == 3 && planificador != null) {
+                        for (Planificador plan : planificador) {
+                            plan.mostrarDatosPlanificador();  // Asegúrate de que la clase Planificador tenga el método describir
+                        }
                     }
                     if (opcion_leer == 4 && historial != null) {
-                        for(int i = 0; i < historial.size(); i++){
-                            historial.get(i).mostrarDatosHistorial();
+                        for (Historial hist : historial) {
+                            hist.mostrarDatosHistorial();  // Asegúrate de que la clase Historial tenga el método describir
                         }
                     }
                     break;
                 }
-                
+
+
                 case 4 ->{
                     operaciones.Menu4();
                     opcion_leer = Entrada.nextInt();
@@ -278,7 +279,7 @@ public class Entrega2 {
     }
      
 public static void EscribirPaciente(ArrayList<Paciente> pacientes) {
-    File file = new File("C:\\Users\\benji\\OneDrive\\Escritorio\\Entrega2\\pacientes.csv");
+    File file = new File("datos/pacientes.csv");
     
     SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
     String[] header = {"rut","Nombre","Apellido","fecha_Nacimiento","altura","peso","grupo_Sanguineo","alergias","genero","telefono","correo","direccion","pre_Existencias","observaciones"};
@@ -313,7 +314,7 @@ public static void EscribirPaciente(ArrayList<Paciente> pacientes) {
 }
 
 public static void EscribirDoctor(ArrayList<Doctor> doctores) {
-    File file = new File("C:\\Users\\benji\\OneDrive\\Escritorio\\Entrega2\\doctor.csv");
+    File file = new File("datos/doctor.csv");
     
     SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
     String []header = {"Nombre","Apellido","rut","Especialidad","Formacion","Direccion","Correo","Telefono","Consulta","fechaNacimiento"};
@@ -345,7 +346,7 @@ public static void EscribirDoctor(ArrayList<Doctor> doctores) {
 
 
 public static void EscribirHistorial(ArrayList<Historial> historiales) {
-    File file = new File("C:\\Users\\benji\\OneDrive\\Escritorio\\Entrega2\\historial.csv");
+    File file = new File("datos/historial.csv");
     
     SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
     String[] header = {
@@ -391,7 +392,7 @@ public static void EscribirHistorial(ArrayList<Historial> historiales) {
 
 
 public static void EscribirPlanificador(ArrayList<Planificador> planificaciones) {
-    File file = new File("C:\\Users\\benji\\OneDrive\\Escritorio\\Entrega2\\src\\testplanificador.csv");
+    File file = new File("datos/planificador.csv");
     
     SimpleDateFormat formatoHora = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // Formato para la fecha y hora
     SimpleDateFormat formatoFechaNacimiento = new SimpleDateFormat("dd/MM/yyyy"); // Formato para fecha de nacimiento

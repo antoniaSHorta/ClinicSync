@@ -83,4 +83,13 @@ public class Persona {
         this.correo = correo;
     }
     
+    public void describir() {
+    System.out.printf("Rut: %s\n", this.getRut());
+    System.out.printf("Nombre: %s\n", this.getNombre());
+    System.out.printf("Apellido: %s\n", this.getApellido());
+    System.out.printf("Fecha de Nacimiento: %s\n", this.getFecha_nacimiento().toString());
+    System.out.printf("Dirección: %s\n", this.getDireccion());
+    System.out.printf("Teléfono: %s\n", this.getTelefono());
+    System.out.printf("Correo: %s\n", this.getCorreo());
+}
 }

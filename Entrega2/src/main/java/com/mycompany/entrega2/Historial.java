@@ -65,7 +65,7 @@ public class Historial {
     public void mostrarDatosHistorial ()
     {
         System.out.println("Ficha:");
-        this.ficha.mostrarPaciente(); 
+        this.ficha.describir(); 
         System.out.println("Dia:" + this.dia_consulta);
         System.out.println("Receta:" + this.receta_Entregada);
         System.out.println("Examenes:" +this.examenes);

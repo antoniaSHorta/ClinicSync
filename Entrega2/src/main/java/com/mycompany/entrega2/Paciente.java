@@ -97,20 +97,16 @@ public class Paciente extends Persona{
         this.observaciones = observaciones;
     }    
     
-        public void mostrarPaciente(){
-        System.out.printf("Rut es: %s\n", this.getRut());
-        System.out.printf("Nombre: %s %s\n", this.getNombre(), this.getApellido());
-        System.out.printf("Fecha de Nacimiento: %s\n", this.getFecha_nacimiento().toString());
-        System.out.printf("Altura: %s\n", this.altura);
-        System.out.printf("Peso: %s\n", this.peso);
-        System.out.printf("Grupo Sanguineo: %s\n", this.getGrupo_sanguineo());
-        System.out.printf("Alergias: %s\n", this.alergias);
-        System.out.printf("Genero: %s\n", this.genero);
-        System.out.printf("Telefono: %s\n", this.getTelefono());
-        System.out.printf("Correo: %s\n", this.getCorreo());
-        System.out.printf("Pre-Existencias: %s\n", this.getPre_existencias());
-        System.out.printf("Observaciones: %s\n", this.observaciones);
-        System.out.println();
+    @Override
+    public void describir() {
+        super.describir();
+        System.out.printf("Altura: %s\n", this.getAltura());
+        System.out.printf("Peso: %s\n", this.getPeso());
+        System.out.printf("Grupo Sanguíneo: %s\n", this.getGrupo_sanguineo());
+        System.out.printf("Alergias: %s\n", this.getAlergias());
+        System.out.printf("Género: %s\n", this.getGenero());
+        System.out.printf("Pre-existencias: %s\n", this.getPre_existencias());
+        System.out.printf("Observaciones: %s\n", this.getObservaciones());
     }
     
 }

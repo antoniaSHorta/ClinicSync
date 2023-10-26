@@ -50,18 +50,13 @@ public class Doctor extends Persona{
     public void setConsulta(String consulta) {
         this.consulta = consulta;
     }
-        public void mostrarDatosDoctor ()
-    {
-        System.out.println("Nombre:" + this.getNombre());
-        System.out.println("Apellido:" + this.getApellido());
-        System.out.println("Rut:" + this.getRut());
-        System.out.println("Especialidad:" + this.getEspecialidad());
-        System.out.println("Formacion:" + this.formacion);
-        System.out.println("Direccion:" + this.getDireccion());
-        System.out.println("Correo:" + this.getCorreo());
-        System.out.println("Telefono:" + this.getTelefono());
-        System.out.println("Consulta:" + this.consulta);
-        System.out.println();
+    
+    @Override
+    public void describir() {
+        super.describir();
+        System.out.printf("Especialidad: %s\n", this.getEspecialidad());
+        System.out.printf("Formación: %s\n", this.getFormacion());
+        System.out.printf("Consulta: %s\n", this.getConsulta());
     }
         
 }

@@ -56,7 +56,7 @@ public class Planificador {
         System.out.println("Hora:" + this.hora);
         System.out.println("Disponibilidad:" + this.disponibilidad);
         System.out.println("Ficha:");
-        this.ficha.mostrarPaciente(); 
+        this.ficha.describir(); 
         System.out.println("Observacion:" + this.observacion);
     }   
 }
