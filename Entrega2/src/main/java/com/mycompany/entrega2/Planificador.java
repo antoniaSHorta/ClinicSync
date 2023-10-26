@@ -6,7 +6,7 @@ package com.mycompany.entrega2;
 import java.util.Date;
 
 public class Planificador {
- private Date hora;
+    private Date hora;
     private int disponibilidad; //Si es 0 esta libre, de lo contrario esta ocupado
     private Paciente ficha;
     private String observacion;

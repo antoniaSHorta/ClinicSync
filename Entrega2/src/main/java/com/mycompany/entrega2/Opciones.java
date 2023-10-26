@@ -16,18 +16,31 @@ public class Opciones {
     }
 
     public void Menu1(){
-        System.out.println("1. Agregar pacientes");
-        System.out.println("2. Agregar Doctores");
-        System.out.println("3. Agregar Planificados");
+        System.out.println("1. Agregar Paciente");
+        System.out.println("2. Agregar Doctor");
+        System.out.println("3. Agregar Planificador");
         System.out.println("4. Agregar Historial");
     }
     
     public void Menu2(){
-        System.out.println("1. Mostrar pacientes");
+        System.out.println("1. Modificar Paciente");
+        System.out.println("2. Modificar Doctor");
+        System.out.println("3. Modificar Planificador");
+        System.out.println("4. Modificar Historial");
+    }
+    
+    public void Menu3(){
+        System.out.println("1. Mostrar Pacientes");
         System.out.println("2. Mostrar Doctores");
-        System.out.println("3. Mostrar Planificados");
+        System.out.println("3. Mostrar Planificador");
         System.out.println("4. Mostrar Historial");
     }
     
+    public void Menu4(){
+        System.out.println("1. Eliminar Paciente");
+        System.out.println("2. Eliminar Doctor");
+        System.out.println("3. Eliminar Planificador");
+        System.out.println("4. Eliminar Historial");
+    }
     
 }

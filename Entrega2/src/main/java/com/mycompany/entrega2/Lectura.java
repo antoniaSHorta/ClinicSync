@@ -202,16 +202,7 @@ public ArrayList<Planificador> LeerPlanificador() throws CsvValidationException 
 
 
 
-    public Paciente buscarPaciente(ArrayList<Paciente>paciente, String Rut)
-    {
-        for(int i=0; i< paciente.size(); i++)
-        {
-            if(paciente.get(i).getRut().equals(Rut))
-                return paciente.get(i);
-        }
-        return null;
-    }
-    
+
         
     //
     //

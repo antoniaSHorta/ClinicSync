@@ -13,6 +13,7 @@ import com.opencsv.exceptions.CsvValidationException;
 import java.io.File;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class Entrega2 {
@@ -27,10 +28,16 @@ public class Entrega2 {
                 "D:\\WorkSapce\\Java\\Entrega2\\src\\test\\historial.csv",
                 "D:\\WorkSapce\\Java\\Entrega2\\src\\test\\planificador.csv");
         Opciones operaciones = new Opciones();
+        Buscar buscador = new Buscar();
+        Modificar modificador = new Modificar();
+        Eliminar eliminador = new Eliminar();
+        
         ArrayList<Paciente> pacientes = lector.LeerPaciente();
         ArrayList<Doctor> doctor = lector.LeerDoctor();
         ArrayList<Planificador> planificador = lector.LeerPlanificador();
         ArrayList<Historial> historial = lector.LeerHistorial();
+        
+        int pos;
         
         //MENU
         while (opcion != 0) {
@@ -43,40 +50,124 @@ public class Entrega2 {
                     operaciones.Menu1();
                     opcion_leer = Entrada.nextInt();
                                 
-                    if (opcion_leer == 1) {
+                switch (opcion_leer) {
+                    case 1:
                         pacientes.add(lector.crearPacientePorTeclado());
-                    } else if (opcion_leer == 2) {
+                        break;
+                    case 2:
                         doctor.add(lector.crearDoctorPorTeclado());
-                    } else if (opcion_leer == 3) {
+                        break;
+                    case 3:
                         if (pacientes != null) {
                             //Revisar forma de agregar para minimizar codigo
                             System.out.print("Ingrese rut paciente:");
                             String rut = Entrada.next();
                             Entrada.nextLine();
-                            Paciente buscado = lector.buscarPaciente(pacientes,rut);
-                            if(buscado != null)
+                            pos = buscador.buscarPaciente(pacientes,rut);
+                            
+                            if(pos != -1)
                             {
-                             planificador.add(lector.crearPlanificadorPorTeclado(buscado));
+                                Paciente buscado = pacientes.get(pos);
+                                planificador.add(lector.crearPlanificadorPorTeclado(buscado));
                             }
                         }
-                    } else if (opcion_leer == 4) {
+                        break;
+                    case 4:
                         if (pacientes != null) {
                             System.out.print("Ingrese rut paciente:");
                             String rut = Entrada.next();
                             Entrada.nextLine();
-                            Paciente buscado = lector.buscarPaciente(pacientes, rut);
-                            if (buscado!= null)
+                            pos = buscador.buscarPaciente(pacientes,rut);
+                            
+                            if(pos != -1)
                             {
+                                Paciente buscado = pacientes.get(pos);
                                 historial.add(lector.crearHistorialPorTeclado(buscado));
                             }
                             
                         }
-                    }
+                        break;
+                    default:
+                        break;
+                }
                     break;
                 }
                 
-                case 3 -> {//Imprimir los datos
+                case 2 -> {
                     operaciones.Menu2();
+                    opcion_leer = Entrada.nextInt();
+                    switch(opcion_leer){
+                        case 1 ->{
+                            String rut;
+                            System.out.print("Ingrese RUT del paciente a modificar: ");
+                            rut = Entrada.next();
+                            Entrada.nextLine();
+                            pos = buscador.buscarPaciente(pacientes, rut);
+                            if (pos != -1){
+                                modificador.ModificarPaciente(pacientes, pos);
+                            }
+                            break;
+                        }
+                        
+                        case 2 -> {
+                            String rut;
+                            System.out.print("Ingrese RUT del doctor a modificar: ");
+                            rut = Entrada.nextLine();
+                            pos = buscador.buscarDoctor(doctor, rut);
+                            if (pos != -1){
+                                modificador.ModificarDoctor(doctor, pos);
+                            }
+                            break;
+                        }
+                        
+                        case 3 -> {
+                            
+                            System.out.print("Ingrese fecha y hora (dd/MM/yyyy HH:mm:ss): ");
+                            String horaStr = Entrada.nextLine();
+                            SimpleDateFormat formatoHora = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                            Date hora = null;
+                            try {
+                                hora = formatoHora.parse(horaStr);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            
+                            pos = buscador.buscarPlanificador(planificador, hora);
+                            if (pos != -1){
+                                modificador.ModificarPlanificador(planificador, pos);
+                            }
+                            break;
+                        }
+                        
+                        
+                        case 4 -> {
+                                System.out.print("Ingrese fecha de consulta (dd/MM/yyyy): ");
+                                String fechaConsultaStr = Entrada.nextLine();
+                                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+                                Date dia_consulta = null;
+                                try {
+                                    dia_consulta = formatoFecha.parse(fechaConsultaStr);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                
+                                System.out.print("Ingrese el rut del paciente asociado: ");
+                                String rut = Entrada.nextLine();
+                                
+                                pos = buscador.buscarHistorial(historial, dia_consulta, rut);
+                                
+                                if (pos != -1){
+                                    modificador.ModificarHistorial(historial, pos);
+                                }
+                                break;
+                        }
+                        
+                    }
+                    
+                }
+                
+                case 3 -> {//Imprimir los datos
+                    operaciones.Menu3();
                     opcion_leer = Entrada.nextInt();
 
                     if (opcion_leer == 1 && pacientes != null) {
@@ -101,21 +192,93 @@ public class Entrega2 {
                     }
                     break;
                 }
+                
+                case 4 ->{
+                    operaciones.Menu4();
+                    opcion_leer = Entrada.nextInt();
+                    switch (opcion_leer){
+                        case 1 -> {
+                            String rut;
+                            System.out.print("Ingrese RUT del paciente a eliminar: ");
+                            rut = Entrada.next();
+                            Entrada.nextLine();
+                            pos = buscador.buscarPaciente(pacientes, rut);
+                            if (pos != -1){
+                                eliminador.EliminarPaciente(pacientes, pos);
+                            }
+                            break;
+                        }
+                        
+                        case 2 -> {
+                            String rut;
+                            System.out.print("Ingrese RUT del doctor a eliminar: ");
+                            rut = Entrada.nextLine();
+                            pos = buscador.buscarDoctor(doctor, rut);
+                            if (pos != -1){
+                                eliminador.EliminarDoctores(doctor, pos);
+                            }
+                            break;
+                        }
+                        
+                        case 3 -> {
+                            
+                            System.out.print("Ingrese fecha y hora (dd/MM/yyyy HH:mm:ss): ");
+                            String horaStr = Entrada.nextLine();
+                            SimpleDateFormat formatoHora = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                            Date hora = null;
+                            try {
+                                hora = formatoHora.parse(horaStr);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            
+                            pos = buscador.buscarPlanificador(planificador, hora);
+                            if (pos != -1){
+                                eliminador.EliminarPlanificador(planificador, pos);
+                            }
+                            break;
+                        }
+                        
+                        
+                        case 4 -> {
+                            System.out.print("Ingrese fecha de consulta (dd/MM/yyyy): ");
+                            String fechaConsultaStr = Entrada.nextLine();
+                            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+                            Date dia_consulta = null;
+                            try {
+                                dia_consulta = formatoFecha.parse(fechaConsultaStr);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            
+                            System.out.print("Ingrese el rut del paciente asociado: ");
+                            String rut = Entrada.nextLine();
+                                
+                            pos = buscador.buscarHistorial(historial, dia_consulta, rut);
+                            
+                            if (pos != -1){
+                                eliminador.EliminarHistorial(historial, pos);
+                            }
+                            break;
+                        }
+                    }
+                }
+                
                 case 0-> {
-                System.out.println("Saliendo del programa");
-                EscribirPaciente(pacientes);
-                EscribirDoctor(doctor);
-                EscribirHistorial(historial);
-                EscribirPlanificador(planificador);
+                    System.out.println("Saliendo del programa");
+                    EscribirPaciente(pacientes);
+                    EscribirDoctor(doctor);
+                    EscribirHistorial(historial);
+                    EscribirPlanificador(planificador);
                 }
                 default -> System.out.println("Opcion no disponible");
             }
-                //String[] header = {"rut","Nombre","Apellido","fecha_Nacimiento","altura","peso","grupo_Sanguineo","alergias","genero","telefono","correo","direccion","pre_Existencias","observaciones"};              
+                              
         }    
     }
      
 public static void EscribirPaciente(ArrayList<Paciente> pacientes) {
-    File file = new File("D:\\WorkSapce\\Java\\Entrega2\\src\\test\\pacientes.csv");
+    File file = new File("C:\\Users\\benji\\OneDrive\\Escritorio\\Entrega2\\pacientes.csv");
     
     SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
     String[] header = {"rut","Nombre","Apellido","fecha_Nacimiento","altura","peso","grupo_Sanguineo","alergias","genero","telefono","correo","direccion","pre_Existencias","observaciones"};
@@ -150,7 +313,7 @@ public static void EscribirPaciente(ArrayList<Paciente> pacientes) {
 }
 
 public static void EscribirDoctor(ArrayList<Doctor> doctores) {
-    File file = new File("D:\\WorkSapce\\Java\\Entrega2\\src\\test\\doctor.csv");
+    File file = new File("C:\\Users\\benji\\OneDrive\\Escritorio\\Entrega2\\doctor.csv");
     
     SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
     String []header = {"Nombre","Apellido","rut","Especialidad","Formacion","Direccion","Correo","Telefono","Consulta","fechaNacimiento"};
@@ -182,7 +345,7 @@ public static void EscribirDoctor(ArrayList<Doctor> doctores) {
 
 
 public static void EscribirHistorial(ArrayList<Historial> historiales) {
-    File file = new File("D:\\WorkSapce\\Java\\Entrega2\\src\\test\\historial.csv");
+    File file = new File("C:\\Users\\benji\\OneDrive\\Escritorio\\Entrega2\\historial.csv");
     
     SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
     String[] header = {
@@ -228,7 +391,7 @@ public static void EscribirHistorial(ArrayList<Historial> historiales) {
 
 
 public static void EscribirPlanificador(ArrayList<Planificador> planificaciones) {
-    File file = new File("D:\\WorkSapce\\Java\\Entrega2\\src\\test\\planificador.csv");
+    File file = new File("C:\\Users\\benji\\OneDrive\\Escritorio\\Entrega2\\src\\testplanificador.csv");
     
     SimpleDateFormat formatoHora = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // Formato para la fecha y hora
     SimpleDateFormat formatoFechaNacimiento = new SimpleDateFormat("dd/MM/yyyy"); // Formato para fecha de nacimiento

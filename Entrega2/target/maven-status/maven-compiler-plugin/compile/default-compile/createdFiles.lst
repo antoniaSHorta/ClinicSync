@@ -1,8 +1,11 @@
 com\mycompany\entrega2\Historial.class
 com\mycompany\entrega2\Paciente.class
 com\mycompany\entrega2\Opciones.class
+com\mycompany\entrega2\Buscar.class
 com\mycompany\entrega2\Entrega2.class
 com\mycompany\entrega2\Planificador.class
 com\mycompany\entrega2\Persona.class
+com\mycompany\entrega2\Eliminar.class
+com\mycompany\entrega2\Modificar.class
 com\mycompany\entrega2\Doctor.class
 com\mycompany\entrega2\Lectura.class
