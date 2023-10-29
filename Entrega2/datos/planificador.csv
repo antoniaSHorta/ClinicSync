@@ -1,1 +1,4 @@
-"hora,""disponibilidad"",""rut"",""nombre"",""apellido"",""fecha_nacimiento"",""direccion"",""telefono"",""correo"",""altura"",""peso"",""grupo_sanguineo"",""alergias"",""genero"",""pre_existencias"",""observaciones"",""observacion_planificador"""
+"hora","disponibilidad","rut","nombre","apellido","fecha_nacimiento","direccion","telefono","correo","altura","peso","grupo_sanguineo","alergias","genero","pre_existencias","observaciones","observacion_planificador"
+"25/10/2023 14:30:00","0","12345678-9","Mar�a","Garc�a","10/05/1985","Calle Falsa 123","912345678","maria.garcia@email.com","165","60","A+","Polen","Femenino","Ninguna","Ninguna","Presenta antecedentes de alergia estacional"
+"26/10/2023 16:45:00","1","98765432-1","Jos�","Mart�nez","22/09/1990","Avenida Principal 456","998765432","jose.martinez@email.com","175","75","B-","Ninguna","Masculino","Hipertensi�n","Ninguna","Controlar presi�n arterial regularmente"
+"27/10/2023 12:00:00","1","23456789-0","Ana","L�pez","15/11/1988","Plaza Central 789","923456789","ana.lopez@email.com","170","65","O+","Ninguna","Femenino","Ninguna","Ninguna",""

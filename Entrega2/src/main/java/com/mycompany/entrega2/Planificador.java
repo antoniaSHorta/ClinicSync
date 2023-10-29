@@ -50,13 +50,16 @@ public class Planificador {
         this.observacion = observacion;
     }
 
-    //METODOS
+    // METODOS
     public void mostrarDatosPlanificador ()
     {
         System.out.println("Hora:" + this.hora);
         System.out.println("Disponibilidad:" + this.disponibilidad);
-        System.out.println("Ficha:");
+        System.out.println("-----------------------------------");
+        System.out.println("Ficha");
+        System.out.println("-----------------------------------");
         this.ficha.describir(); 
         System.out.println("Observacion:" + this.observacion);
+        System.out.println("");
     }   
 }

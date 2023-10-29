@@ -83,6 +83,7 @@ public class Persona {
         this.correo = correo;
     }
     
+    // SOBREESCRITURA DE METODO (FUNCION ORIGINAL, PADRE)
     public void describir() {
     System.out.printf("Rut: %s\n", this.getRut());
     System.out.printf("Nombre: %s\n", this.getNombre());

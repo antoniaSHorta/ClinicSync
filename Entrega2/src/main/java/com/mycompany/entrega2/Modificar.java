@@ -4,22 +4,19 @@
  */
 package com.mycompany.entrega2;
 
-
-
+// IMPORTAMOS LIBRERIA
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-/**
- *
- * @author benji
- */
+
 public class Modificar {
     
     Scanner scanner = new Scanner(System.in);
     
+    // MODIFICA PACIENTE
     public void ModificarPaciente(ArrayList <Paciente> pacientes, int index){
         Paciente aModificar = pacientes.get(index);
         
@@ -58,7 +55,6 @@ public class Modificar {
         
         
         //Cambio de parametros
-        
         aModificar.setAltura(altura);
         aModificar.setPeso(peso);
         aModificar.setAlergias(alergias);
@@ -73,8 +69,7 @@ public class Modificar {
         
     }
     
-    
-    
+    // MODIFICAR DOCTOR
     public void ModificarDoctor(ArrayList <Doctor> doctores, int index){
         Doctor aModificar = doctores.get(index);
         
@@ -114,30 +109,37 @@ public class Modificar {
         
     }
     
+    // MODIFICAR PLANIFICADOR //
     public void ModificarPlanificador(ArrayList <Planificador> planificadores, int index){
         Planificador aModificar = planificadores.get(index);
-        
+        int disponibilidad;
         System.out.print("Ingrese la nueva fecha y hora (dd/MM/yyyy HH:mm:ss): ");
         String horaStr = scanner.nextLine();
         SimpleDateFormat formatoHora = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date hora = null;
+        
         try {
             hora = formatoHora.parse(horaStr);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        } 
+        catch (ParseException e) {
         }
 
         System.out.print("Ingrese la nueva disponibilidad de la hora (0 para libre, 1 para ocupado): ");
-        int disponibilidad;
-        while (true) {
+        
+        while (true) 
+        {
             try {
                 disponibilidad = Integer.parseInt(scanner.nextLine());
-                if (disponibilidad == 0 || disponibilidad == 1) {
+                if (disponibilidad == 0 || disponibilidad == 1) 
+                {
                     break;
-                } else {
+                } 
+                else 
+                {
                     System.out.println("Ingrese un valor válido (0 o 1).");
                 }
-            } catch (NumberFormatException e) {
+            } 
+            catch (NumberFormatException e) {
                 System.out.println("Ingrese un valor válido (0 o 1).");
             }
         }
@@ -151,6 +153,7 @@ public class Modificar {
         
     }
     
+    // MODIFICAR HISTORIAL
     public void ModificarHistorial(ArrayList <Historial> historiales, int index){
         Historial aModificar = historiales.get(index);
 
@@ -158,10 +161,12 @@ public class Modificar {
         String fechaConsultaStr = scanner.nextLine();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         Date dia_consulta = null;
-        try {
+        
+        try 
+        {
             dia_consulta = formatoFecha.parse(fechaConsultaStr);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        } 
+        catch (ParseException e) {
         }
 
         System.out.print("Ingrese la nueva receta entregada: ");

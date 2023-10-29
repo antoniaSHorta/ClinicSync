@@ -1,1 +1,6 @@
-"rut,""nombre"",""apellido"",""fecha_nacimiento"",""direccion"",""telefono"",""correo"",""altura"",""peso"",""grupo_sanguineo"",""alergias"",""genero"",""pre_existencias"",""observaciones"",""dia_consulta"",""receta_Entregada"",""examenes"",""obs"""
+"rut","nombre","apellido","fecha_nacimiento","direccion","telefono","correo","altura","peso","grupo_sanguineo","alergias","genero","pre_existencias","observaciones","dia_consulta","receta_Entregada","examenes","obs"
+"12345678-9","Juan","Pérez","10/10/0020","brasil#34","987654321","jperez@email.com","1.75","70","A+","Polvo de polen","M","diabetes","Aspirina","10/10/0020","Sí","Polvo de polen","Ninguna"
+"87654321-0","Maria","López","07/05/0009","brasil#34","987654322","mlopez@email.com","1.60","55","O-","Maní","F","ninguna","Insulina","07/05/0009","Sí","Maní","Ninguna"
+"98765432-1","Carlos","Ramírez","21/01/0026","brasil#34","987654323","cramirez@email.com","1.80","75","B-","Nada","M","Ninguna","Gafas de vista","21/01/0026","Sí","Nada","Gafas de vista"
+"23456789-0","Sofía","González","13/09/0015","brasil#34","987654324","sgonzalez@email.com","1.70","60","AB+","Camarones","M","Insulina","ninguna","13/09/0015","Sí","Camarones","Ninguna"
+"34567890-1","Luis","Hernández","08/02/0033","brasil#34","987654325","lhernandez@email.com","1.85","80","O+","Nada","M","Tiene antecedentes familiares de diabetes","ninguna","08/02/0033","Sí","Nada","Tiene antecedentes familiares de diabetes"

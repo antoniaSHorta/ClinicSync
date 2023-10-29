@@ -61,14 +61,17 @@ public class Historial {
         this.obs = obs;
     }
 
-    //
+    // IMPRIME EN PANTALLA
     public void mostrarDatosHistorial ()
     {
-        System.out.println("Ficha:");
-        this.ficha.describir(); 
+        System.out.println("-----------------------------------");
+        System.out.println("Ficha");
+        System.out.println("-----------------------");
+        this.ficha.describir(); // MUESTRA FICHA PACIENTE
         System.out.println("Dia:" + this.dia_consulta);
         System.out.println("Receta:" + this.receta_Entregada);
         System.out.println("Examenes:" +this.examenes);
         System.out.println("Observaciones:" + this.obs);
+        System.out.println("");
     }
 }

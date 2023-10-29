@@ -11,7 +11,7 @@ public class Doctor extends Persona{
     private String Especialidad;
     private String formacion;
     private String consulta;
-
+    
     public Doctor(String Especialidad, String formacion, String consulta, String rut, String nombre, String apellido, Date fecha_nacimiento, String direccion, String telefono, String correo) {
         super(rut, nombre, apellido, fecha_nacimiento, direccion, telefono, correo);
         this.Especialidad = Especialidad;
@@ -51,12 +51,16 @@ public class Doctor extends Persona{
         this.consulta = consulta;
     }
     
+    /**
+     * SOBREESCRITURA DE METODO, FUNCION DE CLASE HEREDADA DE PERSONA
+     */
     @Override
     public void describir() {
         super.describir();
         System.out.printf("Especialidad: %s\n", this.getEspecialidad());
         System.out.printf("Formación: %s\n", this.getFormacion());
         System.out.printf("Consulta: %s\n", this.getConsulta());
+        System.out.println("");
     }
         
 }

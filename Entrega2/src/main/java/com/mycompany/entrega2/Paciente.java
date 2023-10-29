@@ -97,6 +97,7 @@ public class Paciente extends Persona{
         this.observaciones = observaciones;
     }    
     
+    // SOBREESCRITURA DE METODO, (FUNCION HEREDARA DE PERSONA)
     @Override
     public void describir() {
         super.describir();
@@ -107,6 +108,7 @@ public class Paciente extends Persona{
         System.out.printf("Género: %s\n", this.getGenero());
         System.out.printf("Pre-existencias: %s\n", this.getPre_existencias());
         System.out.printf("Observaciones: %s\n", this.getObservaciones());
+        System.out.println("");
     }
     
 }
