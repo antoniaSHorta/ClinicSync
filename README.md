@@ -10,7 +10,7 @@
             
             - Antonia Ignacia Salinas Horta
             
-## ER:
+## ER
 ![image_8](https://github.com/antoniaSHorta/ClinicSync/assets/142348629/74c5a69b-5834-4d67-8b79-fb9745aa8ff4)
 
 UML: https://miro.com/app/board/uXjVPR0I15I=/?share_link_id=779366812195 
