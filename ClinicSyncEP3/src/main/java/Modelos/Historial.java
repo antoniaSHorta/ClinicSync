@@ -30,7 +30,6 @@ public class Historial {
     }
 
 
-   
     public String getFicha() {
         return ficha;
     }

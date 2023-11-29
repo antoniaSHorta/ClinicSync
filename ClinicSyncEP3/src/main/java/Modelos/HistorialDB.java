@@ -14,4 +14,5 @@ import java.util.ArrayList;
 public interface HistorialDB {
     ArrayList<Historial>ListaHistorial=new ArrayList<Historial>();
     public ArrayList<Historial> Leer(Connection link);
+    public boolean Crear(Connection link, Historial historial);
 }

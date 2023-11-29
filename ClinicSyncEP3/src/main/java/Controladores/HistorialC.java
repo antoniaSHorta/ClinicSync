@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 
 import Modelos.HistorialDB;
 import Modelos.Historial;
+import java.sql.PreparedStatement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 /**
  *
@@ -47,9 +49,32 @@ public class HistorialC implements HistorialDB {
         return null;
     }
     
-   
-    
-    
+    @Override
+    public boolean Crear(Connection link, Historial historial) {
+        try {
+            // Construir la consulta de inserción
+            query = "INSERT INTO historial (rutPaciente, fecha, recetas, examenes, observaciones) VALUES (?, ?, ?, ?, ?)";
+
+            // Crear un PreparedStatement para evitar problemas de seguridad y mejorar rendimiento
+            try (PreparedStatement ps = link.prepareStatement(query)) {
+                // Establecer los valores de los parámetros
+                ps.setString(1, historial.getFicha());
+                ps.setTimestamp(2, new Timestamp(historial.getDia_consulta().getTime()));
+                ps.setString(3, historial.getReceta_Entregada());
+                ps.setString(4, historial.getExamenes());
+                ps.setString(5, historial.getObs());
+
+                // Ejecutar la consulta
+                int filasAfectadas = ps.executeUpdate();
+
+                // Verificar si se insertaron filas
+                return filasAfectadas > 0;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
     
    
 }

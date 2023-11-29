@@ -27,6 +27,7 @@ public class HistorialReporte extends javax.swing.JFrame {
     private Paciente paciente;
     public Conexion conexion;
     public Connection link;
+    
     public HistorialReporte(Paciente paciente) {
         this.paciente = paciente;
         initComponents();
@@ -98,7 +99,7 @@ public class HistorialReporte extends javax.swing.JFrame {
     private void btnDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatosActionPerformed
 
         
-        ArrayList<Historial>ListaH=new ArrayList<Historial>();
+        ArrayList<Historial>ListaH= new ArrayList<Historial>();
         HistorialC historial = new HistorialC();
         ListaH = historial.Leer(link);
         

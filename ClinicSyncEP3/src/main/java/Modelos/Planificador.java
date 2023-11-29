@@ -27,7 +27,7 @@ public class Planificador {
     }
 
     public Date getHora() {
-        return hora;
+        return this.hora;
     }
 
     public void setHora(Date hora) {
@@ -35,7 +35,7 @@ public class Planificador {
     }
 
     public int getDisponibilidad() {
-        return disponibilidad;
+        return this.disponibilidad;
     }
 
     public void setDisponibilidad(int disponibilidad) {
@@ -43,7 +43,7 @@ public class Planificador {
     }
 
     public String getFicha() {
-        return ficha;
+        return this.ficha;
     }
 
     public void setFicha(String ficha) {
@@ -51,7 +51,7 @@ public class Planificador {
     }
 
     public String getObservacion() {
-        return observacion;
+        return this.observacion;
     }
 
     public void setObservacion(String observacion) {

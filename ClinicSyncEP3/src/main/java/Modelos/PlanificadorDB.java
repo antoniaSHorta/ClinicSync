@@ -17,6 +17,6 @@ public interface PlanificadorDB {
     public boolean Crear(Connection link, Planificador planificador);
     public boolean Actualizar(Connection link, Planificador planificador);
     public boolean Eliminar(Connection link, String hora);
-    public ArrayList<Planificador> Leer(Connection link);
+    public ArrayList<Planificador> Leer(Connection link, Date diaEspecifico);
     public Planificador Buscar(Connection link, Date hora);
 }
