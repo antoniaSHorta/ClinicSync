@@ -28,6 +28,7 @@ public class PlanificadorReporte extends javax.swing.JFrame {
         initComponents();
         conexion=new Conexion();
         link=conexion.Conectar();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
